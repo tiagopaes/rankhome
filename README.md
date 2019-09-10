@@ -1,4 +1,5 @@
-# my-app
+# RankHome
+A service that allows you to create and manage rankings for your games
 
 ## Project setup
 ```
