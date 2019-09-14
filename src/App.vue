@@ -1,6 +1,12 @@
 <template>
   <v-app id="app">
-    <v-navigation-drawer v-model="primaryDrawer.model" :clipped="true" app overflow>
+    <v-navigation-drawer
+      v-if="$route.meta.showMenu"
+      v-model="primaryDrawer.model"
+      :clipped="true"
+      app
+      overflow
+    >
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="title">Application</v-list-item-title>
@@ -38,17 +44,22 @@
     </v-navigation-drawer>
 
     <v-app-bar :clipped-left="true" app>
-      <v-app-bar-nav-icon @click.stop="primaryDrawer.model = !primaryDrawer.model"></v-app-bar-nav-icon>
-      <v-toolbar-title>Vuetify</v-toolbar-title>
+      <v-app-bar-nav-icon
+        @click.stop="primaryDrawer.model = !primaryDrawer.model"
+        v-if="$route.meta.showMenu"
+      ></v-app-bar-nav-icon>
+      <v-toolbar-title
+        class="rankhome-title"
+        @click="
+        $route.meta.requiresAuth ?
+        $router.push({ name: 'home' }) :
+        $router.push({ name: 'landing-page' })"
+      >RankHome</v-toolbar-title>
     </v-app-bar>
 
     <v-content>
       <v-container fluid>
-        <v-row align="center" justify="center">
-          <v-col cols="12">
-            <router-view />
-          </v-col>
-        </v-row>
+        <router-view />
       </v-container>
     </v-content>
 
@@ -74,5 +85,8 @@ export default {
 <style lang="css" scoped>
 a {
   text-decoration: none;
+}
+.rankhome-title {
+  cursor: pointer;
 }
 </style>
