@@ -74,7 +74,23 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log("eae");
+      this.loading = true
+      this.$store.dispatch('User/register', {
+        'name': this.name,
+        'email': this.email,
+        'password': this.password
+      }).then(response => {
+        this.$bus.emit('show-notification', 'success','User registred!')
+        this.name = null
+        this.email = null
+        this.password = null
+        this.$router.push({name: 'login'})
+      })
+      .catch(error => {
+        this.$bus.emit('show-notification', 'error', 'Error: ' + Object.values(error))
+      }).finally(() => {
+        this.loading = false
+      })
     }
   }
 };

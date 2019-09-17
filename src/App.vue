@@ -59,6 +59,7 @@
 
     <v-content>
       <v-container fluid>
+        <Notification></Notification>
         <router-view />
       </v-container>
     </v-content>
@@ -70,6 +71,8 @@
 </template>
 
 <script>
+import Notification from '@/components/Notification';
+
 export default {
   data: () => ({
     primaryDrawer: {
@@ -78,7 +81,10 @@ export default {
     footer: {
       inset: false
     }
-  })
+  }),
+  components: {
+    Notification
+  }
 };
 </script>
 
