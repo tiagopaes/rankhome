@@ -1,32 +1,24 @@
-import StorageService from '@/services/StorageService'
 import HttpService from '@/services/HttpService'
 
 export default {
-  register({ commit }, _payload) {
+  register({ commit }, payload) {
     return new Promise((resolve, reject) => {
-      HttpService.post('/auth/register', _payload)
+      HttpService.post('/auth/register', payload)
         .then(response => {
           resolve(response.data)
         })
         .catch(error => reject(error.response.data))
     })
   },
-  // setToken({ commit }, _payload) {
-  //   commit("setToken", _payload);
-  //   StorageService.set("token", _payload);
-  // },
-  // setInfo({ commit }, _payload) {
-  //   commit("setInfo", _payload);
-  //   StorageService.set("decodedToken", _payload);
-  // },
-  // login({ commit }, payload) {
-  //   return new Promise((resolve, reject) => {
-  //     axios
-  //       .post(consts.ENDPOINTS.LOGIN, payload)
-  //       .then(response => {
-  //         resolve(response.data.data.login_info);
-  //       })
-  //       .catch(error => reject(error.message || error.response.data.code));
-  //   });
-  // }
+  login({ commit }, payload) {
+    return new Promise((resolve, reject) => {
+      HttpService.post('/auth/login', payload)
+        .then(response => {
+          commit('setToken', response.data.api_token);
+          commit('setInfo', response.data);
+          resolve(response.data)
+        })
+        .catch(error => reject(error.response.data))
+    })
+  }
 };
