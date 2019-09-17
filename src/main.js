@@ -5,7 +5,9 @@ import router from './router'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import Vuex from 'vuex'
 import store from './store'
+import VueBus from 'vue-bus';
 
+Vue.use(VueBus);
 Vue.use(Vuex)
 Vue.config.productionTip = false
 
