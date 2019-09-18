@@ -4,7 +4,7 @@
       <h1>RankHome</h1>
     </v-row>
     <v-row align="center" justify="center">
-      <p>A service that allows you to create and manage rankings for your games.</p>
+      <p class="subheading font-weight-regular">A service that allows you to create and manage rankings for your games.</p>
     </v-row>
     <v-row align="center" justify="center">
       <v-btn

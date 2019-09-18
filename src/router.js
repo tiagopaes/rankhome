@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import StorageService from '@/services/StorageService'
+
 import Home from './views/Home'
 import LandingPage from './views/LandingPage'
 import Login from './views/Login'
 import Register from './views/Register'
-import StorageService from '@/services/StorageService'
 
 Vue.use(Router)
 

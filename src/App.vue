@@ -7,13 +7,6 @@
       app
       overflow
     >
-      <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title class="title">Application</v-list-item-title>
-          <v-list-item-subtitle>subtext</v-list-item-subtitle>
-        </v-list-item-content>
-      </v-list-item>
-
       <v-divider></v-divider>
 
       <v-list dense nav>
@@ -28,18 +21,6 @@
             </v-list-item-content>
           </v-list-item>
         </router-link>
-
-        <router-link to="/about">
-          <v-list-item>
-            <v-list-item-icon>
-              <v-icon>home</v-icon>
-            </v-list-item-icon>
-
-            <v-list-item-content>
-              <v-list-item-title>About</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </router-link>
       </v-list>
     </v-navigation-drawer>
 
@@ -50,10 +31,7 @@
       ></v-app-bar-nav-icon>
       <v-toolbar-title
         class="rankhome-title"
-        @click="
-        $route.meta.requiresAuth ?
-        $router.push({ name: 'home' }) :
-        $router.push({ name: 'landing-page' })"
+        @click="redirectHandler"
       >RankHome</v-toolbar-title>
     </v-app-bar>
 
@@ -84,8 +62,25 @@ export default {
   }),
   components: {
     Notification
+  },
+  methods: {
+    redirectHandler() {
+      if (this.$route.meta.requiresAuth) {
+        if (this.$route.name !== 'home') {
+          this.$router.push({ name: 'home' })
+        }
+      } else {
+        if (this.$route.name == 'landing-page') {
+          if (this.$store.state.User.token) {
+            this.$router.push({ name: 'home' })
+          }
+        } else {
+          this.$router.push({ name: 'landing-page' })
+        }
+      }
+    }
   }
-};
+}
 </script>
 
 <style lang="css" scoped>
