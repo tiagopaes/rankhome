@@ -65,11 +65,6 @@ const router = new Router({
         requiresAuth: true,
         showMenu: true
       }
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     }
   ]
 })
