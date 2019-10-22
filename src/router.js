@@ -6,6 +6,8 @@ import Home from './views/Home'
 import LandingPage from './views/LandingPage'
 import Login from './views/Login'
 import Register from './views/Register'
+import Rankings from './views/Rankings'
+import CreateRanking from './views/CreateRanking'
 
 Vue.use(Router)
 
@@ -61,6 +63,24 @@ const router = new Router({
       path: '/home',
       name: 'home',
       component: Home,
+      meta: {
+        requiresAuth: true,
+        showMenu: true
+      }
+    },
+    {
+      path: '/rankings',
+      name: 'rankings.list',
+      component: Rankings,
+      meta: {
+        requiresAuth: true,
+        showMenu: true
+      }
+    },
+    {
+      path: '/rankings/create',
+      name: 'rankings.create',
+      component: CreateRanking,
       meta: {
         requiresAuth: true,
         showMenu: true

@@ -10,7 +10,7 @@
       <v-divider></v-divider>
 
       <v-list dense nav>
-        <router-link to="/">
+        <router-link to="/home">
           <v-list-item>
             <v-list-item-icon>
               <v-icon>home</v-icon>
@@ -18,6 +18,18 @@
 
             <v-list-item-content>
               <v-list-item-title>Home</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </router-link>
+
+        <router-link to="/rankings">
+          <v-list-item>
+            <v-list-item-icon>
+              <v-icon>list_alt</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+              <v-list-item-title>Rankings</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </router-link>
@@ -30,7 +42,7 @@
         v-if="$route.meta.showMenu"
       ></v-app-bar-nav-icon>
       <v-toolbar-title
-        class="rankhome-title"
+        class="cursor-pointer"
         @click="redirectHandler"
       >RankHome</v-toolbar-title>
     </v-app-bar>
@@ -87,7 +99,10 @@ export default {
 a {
   text-decoration: none;
 }
-.rankhome-title {
+</style>
+
+<style lang="css">
+.cursor-pointer {
   cursor: pointer;
 }
 </style>
