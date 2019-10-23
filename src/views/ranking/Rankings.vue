@@ -34,7 +34,7 @@
                 <td>{{ ranking.id }}</td>
                 <td colspan="3">{{ ranking.name }}</td>
                 <td>
-                  <v-icon>edit</v-icon>
+                  <v-icon @click="goToEditing(ranking)">edit</v-icon>
                 </td>
                 <td>
                   <v-icon @click="deleteRanking(ranking.id)">delete</v-icon>
@@ -90,6 +90,17 @@ export default {
             "Error when trying to get the rankings"
           );
         });
+    },
+    goToEditing(ranking) {
+      this.$router.push({
+        name: "rankings.edit",
+        params: {
+          id: ranking.id
+        },
+        query: {
+          name: ranking.name
+        }
+      });
     }
   }
 };

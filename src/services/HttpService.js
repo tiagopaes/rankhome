@@ -21,5 +21,8 @@ export default {
   },
   delete(endpoint) {
     return http.delete(endpoint);
+  },
+  put(endpoint, params) {
+    return http.put(endpoint, params);
   }
 };

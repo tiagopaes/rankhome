@@ -28,5 +28,14 @@ export default {
         })
         .catch(error => reject(error.response.data));
     });
+  },
+  update({ commit }, payload) {
+    return new Promise((resolve, reject) => {
+      HttpService.put(`/ranking/${payload.id}`, payload.data)
+        .then(response => {
+          resolve(response.data);
+        })
+        .catch(error => reject(error.response.data));
+    });
   }
 };
